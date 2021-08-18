@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import * as C from './components'
 import * as S from './styles/app'
 import IconWhatsApp from './components/Icon/WhatsApp'
-import validation from './utils/validation'
+import mask from './utils/mask'
 import { getLocalStorage, setLocalStorage } from './utils/localStorage'
 
 function App() {
@@ -30,8 +30,8 @@ function App() {
 
   const showModalAddTodo = () => setModalAddTodo(prevState => !prevState)
   const showModalRemoveTodo = () => setModalRemoveTodo(prevState => !prevState)
-  const showModalShareTodo = () => setModalShareTodo(prevState => !prevState)
   const showModalEditTodo = () => setModalEditTodo(prevState => !prevState)
+  const showModalShareTodo = () => setModalShareTodo(prevState => !prevState)
 
   const doneTodo = (i) => {
     const newTodo = [...todos]
@@ -52,8 +52,7 @@ function App() {
     setTodos([...todos, todo])
 
     clearTextField()
-
-    inputRef.current.focus()
+    showModalAddTodo()
   }
 
   const editTodo = () => {
@@ -75,20 +74,19 @@ function App() {
   }
 
   const shareWhatsApp = () => {
-    const phone = validation(phoneRef.current.value)
+    const phone = mask(phoneRef)
     const linkBase = `https://api.whatsapp.com/send?phone=55${phone}&text=`
     const redirect = `${linkBase}*${todos[indexTodo].title}*%0a%0a${todos[indexTodo].msg}`
 
-    window.open(
-      redirect,
-      '_blank'
-    )
+    window.open(redirect, '_blank')
+
+    showModalShareTodo()
   }
 
   const validatePhone = () => {
-    console.log('antes', phoneRef.current.value)
-    if(validation(phoneRef.current.value).length >= 11) {
-      console.log('if', phoneRef.current.value)
+    mask(phoneRef)
+
+    if(mask(phoneRef).length === 11) {
       setActiveButtonShare(false)
     }
     else !activeButtonShare && setActiveButtonShare(true)
@@ -108,12 +106,16 @@ function App() {
             onClick={showModalAddTodo}
             txt="Adicionar Tarefa"
             icon={<S.IconAdd />}
+            aria-label="Adicionar Todo"
           />
         </S.WrapperHeader>
       </C.CardWrapper>
 
       <C.CardWrapper>
-        <C.CompleteTodos completeTodos={verifyCompleteTodos()} TotalTodos={todos.length} />
+        <C.CompleteTodos
+          completeTodos={verifyCompleteTodos()}
+          TotalTodos={todos.length}
+        />
       </C.CardWrapper>
 
       <S.Main>
@@ -135,16 +137,24 @@ function App() {
 
       {modalAddTodo && (
         <C.Modal title="Atenção" onClick={showModalAddTodo}>
-          <C.Input ref={inputRef} placeholder="Escreva o título do seu todo..." />
+          <C.Input
+            type="text"
+            ref={inputRef}
+            placeholder="Escreva o título da tarefa..."
+          />
 
-          <C.TextField ref={textRef} />
+          <C.TextField
+            ref={textRef}
+            placeholder="Escreva o texto da sua tarefa..."
+          />
 
           <C.Button
             fullWidth={true}
             center={true}
             onClick={addTodo}
-            txt="Adicionar Todo"
+            txt="Adicionar Tarefa"
             icon={<S.IconAdd />}
+            aria-label="Adicionar Tarefa"
           />
         </C.Modal>
       )}
@@ -152,6 +162,7 @@ function App() {
       {modalEditTodo && (
         <C.Modal title="Atenção" onClick={showModalEditTodo}>
           <C.Input
+            type="text"
             defaultValue={todos[indexTodo].title}
             ref={editInputRef}
             placeholder="Escreva o título do seu todo..."
@@ -174,11 +185,12 @@ function App() {
 
       {modalRemoveTodo && (
         <C.Modal title="Atenção" onClick={showModalRemoveTodo}>
-         <p>Deseja realmente excluir o todo?</p>
+         <p>Deseja realmente excluir a tarefa?</p>
 
           <C.Button
             onClick={() => removeTodo(indexTodo)}
-            txt="Excluir o Todo"
+            txt="Excluir a tarefa"
+            aria-label="Excluir a tarefa"
             icon={<S.IconDelete />}
             fullWidth={true}
             center={true}
@@ -193,14 +205,17 @@ function App() {
          </p>
 
           <C.Input
+            type="text"
             ref={phoneRef}
-            placeholder="(XX) 9 XXXX-XXXX"
+            placeholder="(XX) 9XXXX-XXXX"
             onChange={validatePhone}
+            onInput={validatePhone}
           />
 
           <C.Button
             onClick={shareWhatsApp}
             txt="Compartilhar Agora"
+            aria-label="Compartilhar Agora"
             icon={<IconWhatsApp size="2rem" />}
             disabled={activeButtonShare}
             fullWidth={true}
