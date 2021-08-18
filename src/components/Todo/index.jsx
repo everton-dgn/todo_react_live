@@ -41,7 +41,7 @@ const Todo = ({
   }
 
   return (
-    <C.CardWrapper onClick={showButtons}>
+    <S.CardContainer onClick={showButtons}>
       <S.WrapperContent showPadding={showActions}>
         <S.Title done={done}>{title}</S.Title>
         <C.Separator />
@@ -51,20 +51,36 @@ const Todo = ({
       {showActions && (
         <S.WrapperButtons>
           <S.WrapperIcons>
-            <C.ButtonIcon onClick={actionRemoveTodo} icon={<S.IconDelete />} />
-            <C.ButtonIcon onClick={actionEditTodo} icon={<S.IconEdit />} />
-            <C.ButtonIcon onClick={actionShareTodo} icon={<IconWhatsApp />} />
+            <C.ButtonIcon
+              onClick={actionRemoveTodo}
+              icon={<S.IconDelete />}
+              title="Deletar tarefa"
+              aria-label="Deletar tarefa"
+            />
+            <C.ButtonIcon
+              onClick={actionEditTodo}
+              icon={<S.IconEdit />}
+              title="Editar tarefa"
+              aria-label="Editar tarefa"
+            />
+            <C.ButtonIcon
+              onClick={actionShareTodo}
+              icon={<IconWhatsApp />}
+              title="Compartilhar tarefa"
+              aria-label="Compartilhar tarefa"
+            />
           </S.WrapperIcons>
 
           <C.Button
             onClick={(e) => changeDone(e)}
             txt={done ? 'Concluído' : 'Concluir'}
+            aria-label={done ? 'Concluído' : 'Concluir'}
             color={done ? 'success' : 'danger'}
             size="small"
           />
         </S.WrapperButtons>
       )}
-    </C.CardWrapper>
+    </S.CardContainer>
   )
 }
 

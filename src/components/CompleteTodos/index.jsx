@@ -2,7 +2,7 @@ import * as S from './styles'
 import * as C from '../../components'
 
 const CompleteTodos = ({ completeTodos, TotalTodos }) => {
-  const roundNumber = (number) => number.toFixed(1)
+  const roundNumber = (number) => parseFloat(number.toFixed(1))
 
   const percentage = roundNumber((completeTodos/TotalTodos) * 100)
 

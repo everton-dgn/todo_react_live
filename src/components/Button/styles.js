@@ -16,12 +16,12 @@ const colors = (disabled) => ({
     `}
   `,
   danger: css`
-    background-image: linear-gradient(to right, #de102f, #fd3553);
+    background-image: linear-gradient(to right, #c5021f, #fd3553);
     border: 0.15rem solid #ff9292;
 
     ${!disabled && css`
       &:hover {
-        background-image: linear-gradient(to right, #de102f, #de102f);
+        background-image: linear-gradient(to right, #c5021f, #c5021f);
       }
 
       &:active {

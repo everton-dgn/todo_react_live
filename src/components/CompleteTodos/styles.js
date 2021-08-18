@@ -27,5 +27,5 @@ export const Progress = styled.span`
   color: #fff;
   width: ${({ percent }) => percent}%;
   font-size: 1.4rem;
-  box-shadow: 0.3rem 0 0.5rem -0.1rem rgba(253, 90, 65, 0.64);
+  box-shadow: inset 0 -0.3rem 0.2rem rgba(255, 255, 255, 0.22), inset 0.3rem 0.3rem 0.6rem #1a2d5a29;
 `

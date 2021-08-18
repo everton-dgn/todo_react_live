@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components'
 import { Delete, Edit, Save } from '@styled-icons/material-outlined'
+import CardWrapper from '../CardWrapper'
+
+export const CardContainer = styled(CardWrapper)`
+  cursor: pointer;
+`
 
 export const WrapperContent = styled.div`
   display: flex;
