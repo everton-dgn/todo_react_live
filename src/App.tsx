@@ -63,6 +63,8 @@ function App() {
   }
 
   const addTodo = () => {
+    setError({ title: '', msg: '' })
+
     const validateTitle = validate(inputRef.current?.value) === ''
     const validateMsg = validate(textRef.current?.value) === ''
 
@@ -91,6 +93,8 @@ function App() {
   }
 
   const editTodo = () => {
+    setError({ title: '', msg: '' })
+
     const validateTitle = validate(editInputRef.current?.value) === ''
     const validateMsg = validate(editTextFieldRef.current?.value) === ''
 
