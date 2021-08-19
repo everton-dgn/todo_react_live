@@ -18,3 +18,16 @@ export const TextField = styled.input`
     border: 0.1rem solid #1a2d5a;
   }
 `
+
+export const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`
+
+export const Small = styled.small`
+  font-size: 1.2rem;
+  color: red;
+  padding: 0.3rem 0;
+  line-height: 1.2;
+`

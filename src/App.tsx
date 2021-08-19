@@ -2,14 +2,20 @@ import { useRef, useState, useEffect } from 'react'
 import * as C from 'components'
 import * as S from 'styles/app'
 import IconWhatsApp from 'components/Icon/WhatsApp'
-import mask from 'utils/mask'
 import { getLocalStorage, setLocalStorage } from 'utils/localStorage'
+import mask from 'utils/mask'
+import validate from 'utils/validate'
 
 export type TodosType = {
-  title: string
-  msg: string
+  title: string | undefined
+  msg: string | undefined
   done: boolean
 }[]
+
+export type ErrorType = {
+  title: string
+  msg: string
+}
 
 function App() {
   const [todos, setTodos] = useState<TodosType>([])
@@ -19,12 +25,16 @@ function App() {
   const [modalEditTodo, setModalEditTodo] = useState<boolean>(false)
   const [indexTodo, setIndexTodo] = useState<number>(0)
   const [activeButtonShare, setActiveButtonShare] = useState<boolean>(true)
+  const [error, setError] = useState<ErrorType>({ title: '', msg: '' })
 
   const inputRef = useRef<HTMLInputElement>(null)
   const textRef = useRef<HTMLTextAreaElement>(null)
   const editInputRef = useRef<HTMLInputElement>(null)
   const editTextFieldRef = useRef<HTMLTextAreaElement>(null)
   const phoneRef = useRef<HTMLInputElement>(null)
+
+  const errorMsg =
+    'Preenchimento inválido! O campo não pode ficar vazio ou apenas com espaços'
 
   useEffect(() => {
     if (getLocalStorage('listTodos') !== null) {
@@ -53,12 +63,23 @@ function App() {
   }
 
   const addTodo = () => {
-    if (textRef.current?.value === '' || inputRef.current?.value === '') return
+    const validateTitle = validate(inputRef.current?.value) === ''
+    const validateMsg = validate(textRef.current?.value) === ''
+
+    if (validateTitle || validateMsg) {
+      setError({
+        title: validateTitle ? errorMsg : '',
+        msg: validateMsg ? errorMsg : ''
+      })
+      return
+    } else {
+      setError({ title: '', msg: '' })
+    }
 
     if (inputRef.current !== null && textRef.current !== null) {
       const todo = {
-        title: inputRef.current.value,
-        msg: textRef.current.value,
+        title: validate(inputRef.current.value),
+        msg: validate(textRef.current.value),
         done: false
       }
 
@@ -70,11 +91,24 @@ function App() {
   }
 
   const editTodo = () => {
+    const validateTitle = validate(editInputRef.current?.value) === ''
+    const validateMsg = validate(editTextFieldRef.current?.value) === ''
+
+    if (validateTitle || validateMsg) {
+      setError({
+        title: validateTitle ? errorMsg : '',
+        msg: validateMsg ? errorMsg : ''
+      })
+      return
+    } else {
+      setError({ title: '', msg: '' })
+    }
+
     if (editInputRef.current != null && editTextFieldRef.current !== null) {
       const newTodo = [...todos]
 
-      newTodo[indexTodo].title = editInputRef.current.value
-      newTodo[indexTodo].msg = editTextFieldRef.current.value
+      newTodo[indexTodo].title = validate(editInputRef.current.value)
+      newTodo[indexTodo].msg = validate(editTextFieldRef.current.value)
       setTodos(newTodo)
 
       setModalEditTodo(prevState => !prevState)
@@ -158,11 +192,13 @@ function App() {
             type="text"
             ref={inputRef}
             placeholder="Escreva o título da tarefa..."
+            error={error.title}
           />
 
           <C.TextField
             ref={textRef}
             placeholder="Escreva o texto da sua tarefa..."
+            error={error.msg}
           />
 
           <C.Button
@@ -185,11 +221,13 @@ function App() {
             defaultValue={todos[indexTodo].title}
             ref={editInputRef}
             placeholder="Escreva o título do seu todo..."
+            error={error.title}
           />
 
           <C.TextField
             defaultValue={todos[indexTodo].msg}
             ref={editTextFieldRef}
+            error={error.msg}
           />
 
           <C.Button

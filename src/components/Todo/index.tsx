@@ -4,8 +4,8 @@ import * as S from 'components/Todo/styles'
 import IconWhatsApp from 'components/Icon/WhatsApp'
 
 export type TodoProps = {
-  title: string
-  msg: string
+  title: string | undefined
+  msg: string | undefined
   done: boolean
   showModalRemoveTodo: () => void
   showModalShareTodo: () => void
