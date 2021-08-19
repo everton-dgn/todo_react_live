@@ -45,9 +45,7 @@ function App() {
   useEffect(() => setLocalStorage('listTodos', todos), [todos])
 
   useEffect(() => {
-    if (modalAddTodo === false && modalEditTodo === false) {
-      setError({ title: '', msg: '' })
-    }
+    if (!modalAddTodo && !modalEditTodo) setError({ title: '', msg: '' })
   }, [modalAddTodo, modalEditTodo])
 
   const showModalAddTodo = () => setModalAddTodo(prevState => !prevState)
@@ -147,9 +145,7 @@ function App() {
     } else !activeButtonShare && setActiveButtonShare(true)
   }
 
-  const verifyCompleteTodos = () => {
-    return todos.filter(({ done }) => done === true).length
-  }
+  const verifyCompleteTodos = () => todos.filter(({ done }) => done).length
 
   return (
     <S.Container>

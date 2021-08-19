@@ -3,7 +3,7 @@ import { Add, Delete, Save } from '@styled-icons/material-outlined'
 import T from 'theme'
 
 export const Container = styled.div`
-  display: flex;
+  display: grid;
   flex-direction: column;
   width: 100%;
   max-width: 100rem;
@@ -12,21 +12,22 @@ export const Container = styled.div`
 `
 
 export const Main = styled.main`
-  display: flex;
+  display: grid;
   flex-direction: column;
   width: 100%;
   gap: 2rem;
 `
 
 export const WrapperHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  text-align: center;
   width: 100%;
   gap: 2rem;
 
   ${T.breakPoints(490)} {
-    flex-direction: row;
+    grid-template-columns: auto auto;
     align-items: center;
     justify-content: space-between;
   }
