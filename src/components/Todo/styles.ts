@@ -6,23 +6,27 @@ export const CardContainer = styled(CardWrapper)`
   cursor: pointer;
 `
 
-export const WrapperContent = styled.div`
+export const WrapperContent = styled.div<{ showPadding: boolean }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-right: ${({ showPadding }) => showPadding ? '2rem' : '0'};
+  padding-right: ${({ showPadding }) => (showPadding ? '2rem' : '0')};
 `
 
-export const Title = styled.h2`
-  ${({ done }) => done && css`
-    text-decoration: line-through;
-  `}
+export const Title = styled.h2<{ done: boolean }>`
+  ${({ done }) =>
+    done &&
+    css`
+      text-decoration: line-through;
+    `}
 `
 
-export const Text = styled.p`
-  ${({ done }) => done && css`
-    text-decoration: line-through;
-  `}
+export const Text = styled.p<{ done: boolean }>`
+  ${({ done }) =>
+    done &&
+    css`
+      text-decoration: line-through;
+    `}
 `
 
 export const WrapperButtons = styled.div`

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.section`
   border-radius: 0.8rem;
   padding: 2rem;
-  background-image: linear-gradient(182deg,#eceff2,#fff);
+  background-image: linear-gradient(182deg, #eceff2, #fff);
   display: flex;
   flex-direction: row;
   justify-content: space-between;

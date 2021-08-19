@@ -1,4 +1,4 @@
-const mask = (number) => {
+const mask = (number: any) => {
   number.current.maxLength = 15
 
   let value = number.current.value

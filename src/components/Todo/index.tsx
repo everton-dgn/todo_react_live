@@ -1,7 +1,19 @@
 import { useState } from 'react'
-import * as C from '../../components'
-import * as S from './styles'
-import IconWhatsApp from '../Icon/WhatsApp'
+import * as C from 'components'
+import * as S from 'components/Todo/styles'
+import IconWhatsApp from 'components/Icon/WhatsApp'
+
+export type TodoProps = {
+  title: string
+  msg: string
+  done: boolean
+  showModalRemoveTodo: () => void
+  showModalShareTodo: () => void
+  showModalEditTodo: () => void
+  doneTodo: (state: number) => void
+  setIndexTodo: (state: number) => void
+  index: number
+}
 
 const Todo = ({
   title,
@@ -13,8 +25,8 @@ const Todo = ({
   doneTodo,
   setIndexTodo,
   index
-}) => {
-  const [showActions, setShowActions] = useState(false)
+}: TodoProps) => {
+  const [showActions, setShowActions] = useState<boolean>(false)
 
   const showButtons = () => {
     setShowActions(prevState => !prevState)
@@ -35,7 +47,7 @@ const Todo = ({
     setIndexTodo(index)
   }
 
-  const changeDone = (e) => {
+  const changeDone = (e: { stopPropagation: () => void }) => {
     e.stopPropagation()
     doneTodo(index)
   }
@@ -72,7 +84,7 @@ const Todo = ({
           </S.WrapperIcons>
 
           <C.Button
-            onClick={(e) => changeDone(e)}
+            onClick={changeDone}
             txt={done ? 'Concluído' : 'Concluir'}
             aria-label={done ? 'Concluído' : 'Concluir'}
             color={done ? 'success' : 'danger'}

@@ -31,7 +31,7 @@ export const Modal = styled.div`
   position: relative;
   box-shadow: 0 0.3rem 1.5rem #00000059;
   transform: scale(0);
-  background-image: linear-gradient(182deg,#eceff2,#fff);
+  background-image: linear-gradient(182deg, #eceff2, #fff);
   animation: ${animation} 0.3s ease-in-out forwards;
 `
 
@@ -47,7 +47,7 @@ export const ContainerClose = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   &:focus {
     border: 0.1rem dashed #1a2d5a;
   }

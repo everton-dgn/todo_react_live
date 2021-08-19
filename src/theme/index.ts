@@ -13,7 +13,7 @@ const T = {
   },
   fonts: {
     sizes: {
-      small: `1.6rem`,
+      small: '1.6rem',
       medium: '2rem',
       large: '3rem'
     },
@@ -30,7 +30,7 @@ const T = {
       }
     `
   },
-  breakPoints: (width) => `@media screen and (min-width: ${width}px)`
+  breakPoints: (width: number) => `@media screen and (min-width: ${width}px)`
 }
 
 export default T

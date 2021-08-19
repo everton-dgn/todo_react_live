@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { Add, Delete, Save } from '@styled-icons/material-outlined'
-import T from '../theme'
+import T from 'theme'
 
 export const Container = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export const WrapperHeader = styled.div`
   align-items: center;
   width: 100%;
   gap: 2rem;
-  
+
   ${T.breakPoints(490)} {
     flex-direction: row;
     align-items: center;
