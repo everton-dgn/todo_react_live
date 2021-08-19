@@ -44,6 +44,12 @@ function App() {
 
   useEffect(() => setLocalStorage('listTodos', todos), [todos])
 
+  useEffect(() => {
+    if (modalAddTodo === false && modalEditTodo === false) {
+      setError({ title: '', msg: '' })
+    }
+  }, [modalAddTodo, modalEditTodo])
+
   const showModalAddTodo = () => setModalAddTodo(prevState => !prevState)
   const showModalRemoveTodo = () => setModalRemoveTodo(prevState => !prevState)
   const showModalEditTodo = () => setModalEditTodo(prevState => !prevState)
@@ -63,8 +69,6 @@ function App() {
   }
 
   const addTodo = () => {
-    setError({ title: '', msg: '' })
-
     const validateTitle = validate(inputRef.current?.value) === ''
     const validateMsg = validate(textRef.current?.value) === ''
 
@@ -93,8 +97,6 @@ function App() {
   }
 
   const editTodo = () => {
-    setError({ title: '', msg: '' })
-
     const validateTitle = validate(editInputRef.current?.value) === ''
     const validateMsg = validate(editTextFieldRef.current?.value) === ''
 
