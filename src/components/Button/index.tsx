@@ -10,7 +10,7 @@ export type StylesComponentsProps = {
 
 export type ButtonProps = {
   txt: string
-  onClick: () => void
+  onClick: (e: { stopPropagation: () => void }) => void
   icon?: ReactNode
 } & StylesComponentsProps &
   ButtonHTMLAttributes<HTMLButtonElement>

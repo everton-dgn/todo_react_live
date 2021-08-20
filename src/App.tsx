@@ -273,6 +273,7 @@ function App() {
             ref={phoneRef}
             placeholder="(XX) 9XXXX-XXXX"
             onChange={validatePhone}
+            maxLength={15}
           />
 
           <C.Button
