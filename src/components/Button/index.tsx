@@ -10,8 +10,8 @@ export type StylesComponentsProps = {
 
 export type ButtonProps = {
   txt: string
+  onClick: () => void
   icon?: ReactNode
-  onClick: any
 } & StylesComponentsProps &
   ButtonHTMLAttributes<HTMLButtonElement>
 

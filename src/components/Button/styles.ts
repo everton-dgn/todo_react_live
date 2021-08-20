@@ -65,7 +65,6 @@ export const Btn = styled.button<StylesComponentsProps>`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
     max-width: 30rem;
     margin: ${center ? '0 auto' : '0'};
     width: ${fullWidth ? '100%' : 'fit-content'};
@@ -74,6 +73,10 @@ export const Btn = styled.button<StylesComponentsProps>`
     outline: none;
     box-shadow: 0 0.3rem 1rem rgba(26, 45, 90, 0.52);
     cursor: pointer;
+
+    svg {
+      margin-right: 1rem;
+    }
 
     ${colors(disabled)[color]}
     ${sizes[size]}

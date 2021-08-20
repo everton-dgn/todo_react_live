@@ -30,24 +30,25 @@ export const Text = styled.p<{ done: boolean }>`
 `
 
 export const WrapperButtons = styled.div`
+  display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   height: 100%;
   align-items: center;
   justify-content: center;
-  row-gap: 1.5rem;
   border-radius: 0.8rem;
-  display: flex;
 `
 
 export const WrapperIcons = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   flex-wrap: nowrap;
   height: 100%;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   border-radius: 0.8rem;
-  display: flex;
+  margin-bottom: 1.5rem;
 `
 
 const StylesIcons = css`

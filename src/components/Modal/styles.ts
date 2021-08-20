@@ -64,7 +64,8 @@ export const IconClose = styled(Close)`
 `
 
 export const Content = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto;
   flex-direction: column;
   row-gap: 2rem;
 `

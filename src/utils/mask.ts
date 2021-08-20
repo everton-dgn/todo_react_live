@@ -8,8 +8,7 @@ const mask = (number: any) => {
 
   number.current.value = value
 
-  const format = value.replace(/\D/g, '')
-  return format
+  return value.replace(/\D/g, '')
 }
 
 export default mask
