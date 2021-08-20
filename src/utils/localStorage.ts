@@ -7,6 +7,6 @@ export const setLocalStorage = (key: string, value: TodosType) => {
 
 export const getLocalStorage = (key: string) => {
   const value = localStorage.getItem(key)
-  if (value) return JSON.parse(value)
-  else return null
+  if (!value) return null
+  return JSON.parse(value)
 }
