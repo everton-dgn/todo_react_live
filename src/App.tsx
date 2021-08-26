@@ -70,7 +70,7 @@ function App() {
     const validateTitle = validate(inputRef.current?.value) === ''
     const validateMsg = validate(textRef.current?.value) === ''
 
-    if (validateTitle || validateMsg) {
+    if (validateTitle ?? validateMsg) {
       setError({
         title: validateTitle ? errorMsg : '',
         msg: validateMsg ? errorMsg : ''
@@ -98,7 +98,7 @@ function App() {
     const validateTitle = validate(editInputRef.current?.value) === ''
     const validateMsg = validate(editTextFieldRef.current?.value) === ''
 
-    if (validateTitle || validateMsg) {
+    if (validateTitle ?? validateMsg) {
       setError({
         title: validateTitle ? errorMsg : '',
         msg: validateMsg ? errorMsg : ''
