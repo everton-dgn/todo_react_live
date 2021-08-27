@@ -4,6 +4,9 @@
     "es2021": true
   },
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "typescript": {}
     }
@@ -13,7 +16,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:@typescript-eslint/eslint-recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -23,16 +27,37 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "prettier", "@typescript-eslint"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "@typescript-eslint",
+    "eslint-plugin-import-helpers"
+  ],
   "rules": {
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint-in-jsx-scope": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "react/display-name": "off",
     "prettier/prettier": "error",
     "space-before-function-paren": "off",
     "eslint-disable-next-line": "off",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "never",
+        "groups": [
+          "/^react/",
+          "module",
+          ["parent", "sibling", "index"],
+          "/^components/"
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
   }
 }
