@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import * as C from 'components'
-import * as S from 'components/Todo/styles'
 import IconWhatsApp from 'components/Icon/WhatsApp'
+import * as S from 'components/Todo/styles'
 
 export type TodoProps = {
   title: string | undefined

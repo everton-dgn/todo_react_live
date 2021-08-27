@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from 'react'
-import * as C from 'components'
 import * as S from 'styles/app'
-import IconWhatsApp from 'components/Icon/WhatsApp'
 import { getLocalStorage, setLocalStorage } from 'utils/localStorage'
 import mask from 'utils/mask'
 import validate from 'utils/validate'
+import * as C from 'components'
+import IconWhatsApp from 'components/Icon/WhatsApp'
 
 export type TodosType = {
   title: string | undefined

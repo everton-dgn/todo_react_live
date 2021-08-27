@@ -1,6 +1,6 @@
-import * as S from 'components/Modal/styles'
-import * as C from 'components'
 import { ReactNode } from 'react'
+import * as C from 'components'
+import * as S from 'components/Modal/styles'
 
 export type ModalProps = {
   children: ReactNode

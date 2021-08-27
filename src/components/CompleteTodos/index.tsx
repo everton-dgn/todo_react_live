@@ -1,5 +1,5 @@
-import * as S from 'components/CompleteTodos/styles'
 import * as C from 'components'
+import * as S from 'components/CompleteTodos/styles'
 
 export type CompleteTodosProps = {
   completeTodos: number

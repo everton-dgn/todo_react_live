@@ -1,5 +1,5 @@
-import * as S from 'components/TextField/styles'
 import { forwardRef, TextareaHTMLAttributes } from 'react'
+import * as S from 'components/TextField/styles'
 
 export type TextFieldProps = {
   error?: string

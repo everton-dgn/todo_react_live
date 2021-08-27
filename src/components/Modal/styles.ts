@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components'
 import { Close } from '@styled-icons/material-outlined'
+import styled, { keyframes } from 'styled-components'
 
 export const Overlay = styled.div`
   position: fixed;

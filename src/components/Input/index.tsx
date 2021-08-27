@@ -1,5 +1,5 @@
-import * as S from 'components/Input/styles'
 import { forwardRef, InputHTMLAttributes } from 'react'
+import * as S from 'components/Input/styles'
 
 export type InputProps = {
   error?: string

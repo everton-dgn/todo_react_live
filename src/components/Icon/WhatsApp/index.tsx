@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
 import { SVGProps } from 'react'
+import styled, { css } from 'styled-components'
 
 export type IconProps = {
   size?: string
