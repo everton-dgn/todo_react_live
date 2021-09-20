@@ -35,30 +35,38 @@ const Todo = ({
   const actionRemoveTodo = () => {
     showModalRemoveTodo()
     setIndexTodo(index)
+    setShowActions(false)
   }
 
   const actionEditTodo = () => {
     showModalEditTodo()
     setIndexTodo(index)
+    setShowActions(false)
   }
 
   const actionShareTodo = () => {
     showModalShareTodo()
     setIndexTodo(index)
+    setShowActions(false)
   }
 
   const changeDone = (e: { stopPropagation: () => void }) => {
     e.stopPropagation()
     doneTodo(index)
+    setShowActions(false)
   }
 
   return (
-    <S.CardContainer onClick={showButtons}>
-      <S.WrapperContent showPadding={showActions}>
+    <S.CardContainer>
+      <S.WrapperContent>
         <S.Title done={done}>{title}</S.Title>
         <C.Separator />
         <S.Text done={done}>{msg}</S.Text>
       </S.WrapperContent>
+
+      <S.BtnOptions onClick={showButtons}>
+        <S.IconMore />
+      </S.BtnOptions>
 
       {showActions && (
         <S.WrapperButtons>
