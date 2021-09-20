@@ -13,7 +13,7 @@ export const Svg = styled.svg<{ size: string }>`
   fill: #fff;
 `
 
-const IconWhatsApp = ({ size = '1.5rem' }: IconProps) => {
+const IconWhatsApp = ({ size = '2rem' }: IconProps) => {
   return (
     <Svg size={size} height="24px" viewBox="0 0 24 24">
       <g>

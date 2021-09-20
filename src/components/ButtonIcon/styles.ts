@@ -7,8 +7,8 @@ export const Btn = styled.button`
   background-image: linear-gradient(to right, #ce1a35, #fd5a41);
   border-radius: 50%;
   color: #fff;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   outline: none;
   box-shadow: 0 0.2rem 0.8rem #1a2d5a66;
   border: 0.1rem solid #fd5a41;
